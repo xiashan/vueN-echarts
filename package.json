@@ -1,0 +1,39 @@
+{
+  "name": "vuen-echarts",
+  "version": "1.0.0-rc.1",
+  "description": "vue echarts",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "yarn concurrently \"yarn components:parse\" \"yarn components:watch\" \"vuepress dev docs\"",
+    "docs:build": "yarn components:parse && vuepress build docs",
+    "components:parse": "babel-node ./docs/.scripts/parse.js",
+    "components:watch": "watch \"yarn components:parse\" ./src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .js,.vue --ignore-path .",
+    "lintfix": "eslint --fix --ext .js,.vue --ignore-path ."
+  },
+  "author": "xiashan",
+  "license": "ISC",
+  "dependencies": {
+    "echarts": "^4.5.0",
+    "lodash": "^4.17.15",
+    "resize-detector": "^0.2.0",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "@babel/node": "^7.7.4",
+    "@vuedoc/parser": "^2.0.0-beta.5",
+    "babel-eslint": "^10.0.3",
+    "concurrently": "^5.0.0",
+    "eslint": "^6.7.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-loader": "^3.0.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.0.1",
+    "prettier": "^1.19.1",
+    "raw-loader": "^3.1.0",
+    "vue-codemirror": "^4.0.6",
+    "vuepress": "^1.2.0",
+    "watch": "^1.0.2"
+  }
+}

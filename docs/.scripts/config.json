@@ -1,0 +1,7 @@
+{
+  "components": {
+    "ECharts": {
+      "path": "../../src/components/"
+    }
+  }
+}
