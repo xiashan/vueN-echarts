@@ -1,15 +1,16 @@
 <template>
     <div class="demo">
-
         <div class="py-5">
-            <div class="form-group">
-                <label>Bar Chart:</label>
-                <nox-echarts
-                  :options="bar"
-                  ref="bar"
-                  autoresize
-                >
-                </nox-echarts>
+            <div class="form-group" style="margin-top: 16px;">
+                <label>Line Chart:</label>
+                <div class="graph-wrapper">
+                  <nox-echarts
+                    :config="config"
+                    :data="data"
+                    ref="line"
+                  >
+                  </nox-echarts>
+                </div>
             </div>
         </div>
     </div>
@@ -17,79 +18,37 @@
 
 <script>
   import NoxEcharts from '../../../src/components/ECharts';
-  import 'echarts/lib/chart/bar';
-  import getBar from '../data/bar'
+  import echarts from 'echarts';
 
   export default {
     components: { NoxEcharts },
     name: 'EchartsDemo',
     data () {
       return {
-        bar: getBar(),
+        data: [
+          {
+            name: 'click',
+            dataPoints: [
+              {x: '2019-06-25', y: 4568},
+              {x: '2019-06-26', y: 345}
+            ]
+          },
+          {
+            name: 'impresssions',
+            dataPoints: [
+              {x: '2019-06-25', y: 15792},
+              {x: '2019-06-26', y: 0}
+            ]
+          }
+        ],
+        config: {
+          type: 'line',
+          legendScroll: 'scroll',
+        },
         initOptions: {
-          renderer: 'canvas'
+          renderer: 'svg'
         },
       }
-    },
-    mounted () {
-      // this.$refs.picker.open = true
-    },
-    methods: {
-      refresh () {
-        // simulating async data from server
-        this.seconds = 3
-        let bar = this.$refs.bar
-        bar.showLoading({
-          text: 'Loading…',
-          color: '#4ea397',
-          maskColor: 'rgba(255, 255, 255, 0.4)'
-        })
-        let timer = setInterval(() => {
-          this.seconds--;
-          if (this.seconds === 0) {
-            clearTimeout(timer);
-            bar.hideLoading();
-            this.bar = getBar();
-          }
-        }, 1000)
-      },
     }
   }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-    h1, h2 {
-        font-weight: normal;
-    }
-
-    a {
-        color: #42b983;
-    }
-
-    small.form-text {
-        display: initial;
-    }
-    small.form-text::before {
-        content: ' - ';
-    }
-
-    table {
-      border-collapse: collapse;
-      margin: 0;
-      display: table;
-      overflow-x: auto;
-    }
-
-    tr {
-      border-top: none;
-    }
-    tr:nth-child(2n) {
-      background-color: #fff !important;
-    }
-
-    th, td {
-      border: none;
-      text-align: center !important;
-    }
-</style>
