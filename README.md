@@ -4,6 +4,8 @@
 
 Echarts component for vue. 
 
+document: https://xiashan.github.io/vueN-echarts/
+
 ## Installation
 
 ```sh
