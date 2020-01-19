@@ -88,7 +88,7 @@ export function getXAxisTicks(data, config) {
 
   // 从第一组点中拿数据, Fixme 如果第一组数据不全，x轴的显示会有问题
   // 默认type: category，必须通过data设置类目数据
-  if (data && data[0] && data[0].dataPoints) {
+  if ((!xAxis.data || xAxis.data.length === 0) && data && data[0] && data[0].dataPoints) {
     const ticks = [];
     data[0].dataPoints.forEach(dataPoint => {
       ticks.push(dataPoint.x);
